@@ -1,0 +1,26 @@
+{
+  "eczema_01.jpg": {
+    "label": "Eczema",
+    "advice": "Use moisturizer daily and consult a dermatologist if symptoms worsen."
+  },
+   "eczema_02.jpg": {
+    "label": "Eczema",
+    "advice": "Use moisturizer daily and consult a dermatologist if symptoms worsen."
+  },
+   "eczema_03.jpeg": {
+    "label": "Eczema",
+    "advice": "Use moisturizer daily and consult a dermatologist if symptoms worsen."
+  },
+   "eczema_04.jpg": {
+    "label": "Eczema",
+    "advice": "Use moisturizer daily and consult a dermatologist if symptoms worsen."
+  },
+  "psoriasis_01.jpg": {
+    "label": "Psoriasis",
+    "advice": "Keep your skin clean and avoid known triggers like stress."
+  },
+  "fungal_01.jpg": {
+    "label": "Fungal Infection",
+    "advice": "Apply antifungal cream twice daily and keep the area dry."
+  }
+}

@@ -1,5 +1,7 @@
 import os
 import cv2
+import json
+
 
 # path to images folder
 path = "images"
@@ -23,7 +25,6 @@ def load_folder_images():
         current_img = cv2.imread(f"{path}/{img}", 0)
         loaded_images.append(current_img)
         classNames.append(os.path.splitext(img)[0])
-    print(loaded_images)
 
 
 load_folder_images()
@@ -35,7 +36,6 @@ def find_descriptors():
     for img in loaded_images:
         keypoints, descriptors = orb.detectAndCompute(img, None)
         descriptor_list.append(descriptors)
-    print(descriptor_list)
     return descriptor_list
 
 
@@ -84,10 +84,18 @@ def find_id(img, des_list):
     return best_match_index
 
 
+def get_image_info(key):
+    with open("data.json", "r") as f:
+        data = json.load(f)
+        disease_name = data[key]["label"]
+        advice = data[key]["advice"]
+        print(f"Disease: {disease_name}\nAdvice: {advice}")
+
+
 # function to test detector with the testing image
 def test_detector():
     # Load the test image as grayscale
-    testing_img = cv2.imread("images/img4.jpg", cv2.IMREAD_GRAYSCALE)
+    testing_img = cv2.imread("testing_img.jpg", cv2.IMREAD_GRAYSCALE)
 
     # Find the index of the best matching image in the dataset using descriptors
     best_matching_index = find_id(testing_img, descriptorList)
@@ -95,7 +103,8 @@ def test_detector():
     # If a good match found
     if best_matching_index != -1:
         print("best_matching_index", best_matching_index)
-        print(images_list[best_matching_index])
+
+        get_image_info(images_list[best_matching_index])
 
         # Load the matching image from dataset and resize it for display
         best_matching_img = cv2.resize(
